@@ -17,4 +17,10 @@ zenithProxy {
 repositories {
     mavenLocal()
     maven("https://maven.2b2t.vc/releases")
+    maven("https://repo.lucko.me")
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
+}
+
+dependencies {
+    shade("me.lucko:spark-common:1.10.119-SNAPSHOT")
 }

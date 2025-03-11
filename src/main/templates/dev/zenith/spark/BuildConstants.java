@@ -1,4 +1,4 @@
-package org.example;
+package dev.zenith.spark;
 
 // The constants are replaced before compilation
 public class BuildConstants {
