@@ -6,7 +6,6 @@ import me.lucko.spark.common.command.sender.CommandSender;
 import me.lucko.spark.common.platform.PlatformInfo;
 import me.lucko.spark.common.tick.TickHook;
 import me.lucko.spark.common.tick.TickReporter;
-import org.example.BuildConstants;
 
 import java.nio.file.Path;
 import java.util.logging.Level;
@@ -32,7 +31,7 @@ public class SparkPluginImpl implements SparkPlugin {
 
     @Override
     public Stream<? extends CommandSender> getCommandSenders() {
-        return Stream.of(ZenithSparkCommandSender.INSTANCE);
+        return Stream.of(new ZenithSparkCommandSender("Spark", null, null));
     }
 
     @Override

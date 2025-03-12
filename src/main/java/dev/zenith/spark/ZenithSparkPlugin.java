@@ -5,7 +5,6 @@ import com.zenith.api.PluginAPI;
 import com.zenith.api.ZenithProxyPlugin;
 import dev.zenith.spark.command.SparkCommand;
 import me.lucko.spark.common.SparkPlatform;
-import org.example.BuildConstants;
 import org.slf4j.Logger;
 
 @Plugin(

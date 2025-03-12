@@ -7,6 +7,7 @@ import com.zenith.command.brigadier.CommandCategory;
 import com.zenith.command.brigadier.CommandContext;
 import dev.zenith.spark.ZenithSparkCommandSender;
 import dev.zenith.spark.ZenithSparkPlugin;
+import org.geysermc.mcprotocollib.auth.GameProfile;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.getString;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
@@ -30,8 +31,17 @@ public class SparkCommand extends Command {
     public LiteralArgumentBuilder<CommandContext> register() {
         return command("spark")
             .then(argument("args", greedyString()).executes(c -> {
-                ZenithSparkPlugin.SPARK_PLATFORM.executeCommand(ZenithSparkCommandSender.INSTANCE, getString(c, "args").split(" "));
-                c.getSource().setNoOutput(true);
+                ZenithSparkCommandSender sender = switch (c.getSource().getSource()) {
+                    case TERMINAL -> new ZenithSparkCommandSender("Terminal", null, null);
+                    case DISCORD -> new ZenithSparkCommandSender("Discord", null, null);
+                    case SPECTATOR, IN_GAME_PLAYER -> {
+                        var session = c.getSource().getInGamePlayerInfo().session();
+                        GameProfile profile = session.getProfileCache().getProfile();
+                        yield new ZenithSparkCommandSender(profile == null ? session.getUsername() : profile.getName(), profile == null ? session.getLoginProfileUUID() : profile.getId(), session);
+                    }
+                };
+                ZenithSparkPlugin.SPARK_PLATFORM.executeCommand(sender, getString(c, "args").split(" "));
+                c.getSource().setNoOutput(true); // handoff output to spark
                 return OK;
             }));
     }
