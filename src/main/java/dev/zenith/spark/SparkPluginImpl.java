@@ -31,7 +31,7 @@ public class SparkPluginImpl implements SparkPlugin {
 
     @Override
     public Stream<? extends CommandSender> getCommandSenders() {
-        return Stream.of(new ZenithSparkCommandSender("Spark", null, null));
+        return Stream.empty();
     }
 
     @Override
