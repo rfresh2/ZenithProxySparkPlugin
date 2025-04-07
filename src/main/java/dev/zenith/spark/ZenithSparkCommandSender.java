@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-import static com.zenith.Shared.DISCORD;
+import static com.zenith.Globals.DISCORD;
 
 public class ZenithSparkCommandSender implements CommandSender {
     @NotNull private final String name;

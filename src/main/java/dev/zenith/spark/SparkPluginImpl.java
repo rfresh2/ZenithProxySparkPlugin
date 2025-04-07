@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.stream.Stream;
 
-import static com.zenith.Shared.EXECUTOR;
+import static com.zenith.Globals.EXECUTOR;
 
 public class SparkPluginImpl implements SparkPlugin {
     @Override

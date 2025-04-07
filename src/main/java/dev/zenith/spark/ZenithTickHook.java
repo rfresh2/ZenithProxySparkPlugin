@@ -4,7 +4,7 @@ import com.zenith.event.module.ClientTickEvent;
 import me.lucko.spark.common.tick.AbstractTickHook;
 
 import static com.github.rfresh2.EventConsumer.of;
-import static com.zenith.Shared.EVENT_BUS;
+import static com.zenith.Globals.EVENT_BUS;
 
 public class ZenithTickHook extends AbstractTickHook {
 

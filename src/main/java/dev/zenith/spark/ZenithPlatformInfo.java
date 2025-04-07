@@ -2,8 +2,8 @@ package dev.zenith.spark;
 
 import me.lucko.spark.common.platform.PlatformInfo;
 
-import static com.zenith.Shared.LAUNCH_CONFIG;
-import static com.zenith.Shared.MC_VERSION;
+import static com.zenith.Globals.LAUNCH_CONFIG;
+import static com.zenith.Globals.MC_VERSION;
 
 public class ZenithPlatformInfo implements PlatformInfo {
     public static final ZenithPlatformInfo INSTANCE = new ZenithPlatformInfo();
