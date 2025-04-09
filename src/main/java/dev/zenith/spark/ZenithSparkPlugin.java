@@ -1,8 +1,8 @@
 package dev.zenith.spark;
 
-import com.zenith.api.Plugin;
-import com.zenith.api.PluginAPI;
-import com.zenith.api.ZenithProxyPlugin;
+import com.zenith.api.plugin.Plugin;
+import com.zenith.api.plugin.PluginAPI;
+import com.zenith.api.plugin.ZenithProxyPlugin;
 import dev.zenith.spark.command.SparkCommand;
 import me.lucko.spark.common.SparkPlatform;
 import org.slf4j.Logger;

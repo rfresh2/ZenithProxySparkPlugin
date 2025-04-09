@@ -1,6 +1,6 @@
 package dev.zenith.spark;
 
-import com.zenith.plugins.PluginManager;
+import com.zenith.plugin.PluginManager;
 import me.lucko.spark.common.SparkPlugin;
 import me.lucko.spark.common.command.sender.CommandSender;
 import me.lucko.spark.common.platform.PlatformInfo;

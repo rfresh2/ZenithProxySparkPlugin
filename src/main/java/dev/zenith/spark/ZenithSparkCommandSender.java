@@ -1,6 +1,6 @@
 package dev.zenith.spark;
 
-import com.zenith.network.server.ServerSession;
+import com.zenith.api.network.server.ServerSession;
 import com.zenith.util.ComponentSerializer;
 import me.lucko.spark.common.command.sender.CommandSender;
 import net.kyori.adventure.text.Component;
