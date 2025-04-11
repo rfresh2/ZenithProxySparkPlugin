@@ -5,7 +5,7 @@ import com.zenith.api.plugin.PluginAPI;
 import com.zenith.api.plugin.ZenithProxyPlugin;
 import dev.zenith.spark.command.SparkCommand;
 import me.lucko.spark.common.SparkPlatform;
-import org.slf4j.Logger;
+import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 
 @Plugin(
     id = "spark",
@@ -16,7 +16,7 @@ import org.slf4j.Logger;
     mcVersions = {"*"}
 )
 public class ZenithSparkPlugin implements ZenithProxyPlugin {
-    public static Logger LOG;
+    public static ComponentLogger LOG;
     public static SparkPlatform SPARK_PLATFORM;
     public static SparkPluginImpl SPARK_PLUGIN;
 
