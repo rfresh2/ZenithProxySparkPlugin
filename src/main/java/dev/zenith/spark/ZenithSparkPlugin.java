@@ -13,7 +13,7 @@ import org.slf4j.Logger;
     description = "ZenithProxy Spark Plugin",
     url = "https://github.com/rfresh2/ZenithProxySparkPlugin",
     authors = {"rfresh2"},
-    mcVersions = {"*"} // to indicate any MC version: @Plugin(mcVersions = "*")
+    mcVersions = {"*"}
 )
 public class ZenithSparkPlugin implements ZenithProxyPlugin {
     public static Logger LOG;

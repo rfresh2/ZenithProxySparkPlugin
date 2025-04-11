@@ -16,11 +16,11 @@ zenithProxyPlugin {
 
 repositories {
     mavenLocal() // if developing against a locally published zenith build
-    maven("https://maven.2b2t.vc/remote") {
-        description = "Dependencies used by ZenithProxy"
-    }
     maven("https://maven.2b2t.vc/releases") {
         description = "ZenithProxy Releases"
+    }
+    maven("https://maven.2b2t.vc/remote") {
+        description = "Dependencies used by ZenithProxy"
     }
     maven("https://repo.lucko.me")
     maven("https://oss.sonatype.org/content/repositories/snapshots")

@@ -7,7 +7,6 @@ import com.zenith.api.command.CommandContext;
 import com.zenith.api.command.CommandUsage;
 import dev.zenith.spark.ZenithSparkCommandSender;
 import dev.zenith.spark.ZenithSparkPlugin;
-import org.geysermc.mcprotocollib.auth.GameProfile;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.getString;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
@@ -20,6 +19,8 @@ public class SparkCommand extends Command {
             .category(CommandCategory.MODULE)
             .description("""
               Manages the Spark memory and CPU profiler.
+              
+              Spark command documentation: https://spark.lucko.me/docs/Command-Usage
               """)
             .usageLines(
                 "<command>"
@@ -36,13 +37,12 @@ public class SparkCommand extends Command {
                     case DISCORD -> new ZenithSparkCommandSender("Discord", null, null);
                     case SPECTATOR, IN_GAME_PLAYER -> {
                         var session = c.getSource().getInGamePlayerInfo().session();
-                        GameProfile profile = session.getProfileCache().getProfile();
-                        yield new ZenithSparkCommandSender(profile == null ? session.getUsername() : profile.getName(), profile == null ? session.getLoginProfileUUID() : profile.getId(), session);
+                        yield new ZenithSparkCommandSender(session.getName(), session.getUUID(), session);
                     }
                 };
-                ZenithSparkPlugin.SPARK_PLATFORM.executeCommand(sender, getString(c, "args").split(" "));
+                var args = getString(c, "args").split(" ");
+                ZenithSparkPlugin.SPARK_PLATFORM.executeCommand(sender, args);
                 c.getSource().setNoOutput(true); // handoff output to spark
-                return OK;
             }));
     }
 }
