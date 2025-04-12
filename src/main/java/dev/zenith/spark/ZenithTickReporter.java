@@ -1,6 +1,6 @@
 package dev.zenith.spark;
 
-import com.zenith.api.event.client.ClientTickEvent;
+import com.zenith.event.client.ClientTickEvent;
 import me.lucko.spark.common.tick.SimpleTickReporter;
 
 import static com.github.rfresh2.EventConsumer.of;
