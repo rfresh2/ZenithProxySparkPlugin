@@ -1,5 +1,6 @@
 package dev.zenith.spark;
 
+import com.zenith.discord.Embed;
 import com.zenith.network.server.ServerSession;
 import com.zenith.util.ComponentSerializer;
 import me.lucko.spark.common.command.sender.CommandSender;
@@ -34,8 +35,17 @@ public class ZenithSparkCommandSender implements CommandSender {
 
     @Override
     public void sendMessage(final Component component) {
-        String text = ComponentSerializer.serializePlain(component);
-        DISCORD.sendMessage(text);
+        String text = ComponentSerializer.serializePlain(component).trim();
+        if (!text.isBlank()) {
+            // todo: queue and accumulate these messages
+            //  spark likes to send a lot of single-line components
+            //  like see `spark help` output
+            //  would reduce discord spam if we could send these in a single embed
+            DISCORD.sendEmbedMessage(
+                Embed.builder().description(text));
+        }
+        // embed not logged because it has no title so we have to do it manually
+        ZenithSparkPlugin.LOG.info(component);
         if (session != null) {
             session.sendAsyncMessage(component);
         }
