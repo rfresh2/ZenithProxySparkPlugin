@@ -4,14 +4,18 @@ import com.zenith.plugin.PluginManager;
 import me.lucko.spark.common.SparkPlugin;
 import me.lucko.spark.common.command.sender.CommandSender;
 import me.lucko.spark.common.platform.PlatformInfo;
+import me.lucko.spark.common.sampler.source.ClassSourceLookup;
+import me.lucko.spark.common.sampler.source.SourceMetadata;
 import me.lucko.spark.common.tick.TickHook;
 import me.lucko.spark.common.tick.TickReporter;
 
 import java.nio.file.Path;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.stream.Stream;
 
 import static com.zenith.Globals.EXECUTOR;
+import static com.zenith.Globals.PLUGIN_MANAGER;
 
 public class SparkPluginImpl implements SparkPlugin {
     @Override
@@ -68,6 +72,22 @@ public class SparkPluginImpl implements SparkPlugin {
         } else {
             ZenithSparkPlugin.LOG.info(s, throwable);
         }
+    }
+
+    @Override
+    public ClassSourceLookup createClassSourceLookup() {
+        return new ZenithClassSourceLookup();
+    }
+
+    @Override
+    public Collection<SourceMetadata> getKnownSources() {
+        return SourceMetadata.gather(
+            PLUGIN_MANAGER.getPluginInstances(),
+            plugin -> plugin.getPluginInfo().id(),
+            plugin -> plugin.getPluginInfo().version(),
+            plugin -> String.join(", ", plugin.getPluginInfo().authors()),
+            plugin -> plugin.getPluginInfo().description()
+        );
     }
 
     @Override
