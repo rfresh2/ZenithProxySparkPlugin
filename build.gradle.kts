@@ -29,3 +29,13 @@ dependencies {
     zenithProxy("com.zenith:ZenithProxy:$mc-SNAPSHOT")
     shade("me.lucko:spark-common:1.10.134-SNAPSHOT")
 }
+
+tasks {
+    shadowJar {
+        exclude("net/kyori/**") // already provided by zenith
+        relocate("net.bytebuddy", "dev.zenith.spark.shadow.bytebuddy")
+        relocate("org.objectweb.asm", "dev.zenith.spark.shadow.asm")
+        relocate("org.java_websocket", "dev.zenith.spark.shadow.java_websocket")
+        relocate("com.google.protobuf", "dev.zenith.spark.shadow.protobuf")
+    }
+}
