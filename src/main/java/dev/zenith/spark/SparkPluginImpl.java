@@ -84,7 +84,7 @@ public class SparkPluginImpl implements SparkPlugin {
         return SourceMetadata.gather(
             PLUGIN_MANAGER.getPluginInstances(),
             plugin -> plugin.getPluginInfo().id(),
-            plugin -> plugin.getPluginInfo().version(),
+            plugin -> plugin.getPluginInfo().version().toString(),
             plugin -> String.join(", ", plugin.getPluginInfo().authors()),
             plugin -> plugin.getPluginInfo().description()
         );

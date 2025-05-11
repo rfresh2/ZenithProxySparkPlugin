@@ -32,14 +32,14 @@ public class SparkCommand extends Command {
     public LiteralArgumentBuilder<CommandContext> register() {
         return command("spark")
             .then(argument("args", greedyString()).executes(c -> {
-                ZenithSparkCommandSender sender = switch (c.getSource().getSource()) {
-                    case TERMINAL -> new ZenithSparkCommandSender("Terminal", null, null);
-                    case DISCORD -> new ZenithSparkCommandSender("Discord", null, null);
-                    case SPECTATOR, IN_GAME_PLAYER -> {
-                        var session = c.getSource().getInGamePlayerInfo().session();
-                        yield new ZenithSparkCommandSender(session.getName(), session.getUUID(), session);
-                    }
-                };
+                ZenithSparkCommandSender sender;
+                var inGamePlayerInfo = c.getSource().getInGamePlayerInfo();
+                if (inGamePlayerInfo != null) {
+                    var session = inGamePlayerInfo.session();
+                    sender = new ZenithSparkCommandSender(session.getName(), session.getUUID(), session);
+                } else {
+                    sender = new ZenithSparkCommandSender(c.getSource().getSource().name(), null, null);
+                }
                 var args = getString(c, "args").split(" ");
                 ZenithSparkPlugin.SPARK_PLATFORM.executeCommand(sender, args);
                 c.getSource().setNoOutput(true); // handoff output to spark
