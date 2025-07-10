@@ -32,10 +32,26 @@ dependencies {
 
 tasks {
     shadowJar {
-        exclude("net/kyori/**") // already provided by zenith
         relocate("net.bytebuddy", "dev.zenith.spark.shadow.bytebuddy")
         relocate("org.objectweb.asm", "dev.zenith.spark.shadow.asm")
         relocate("org.java_websocket", "dev.zenith.spark.shadow.java_websocket")
         relocate("com.google.protobuf", "dev.zenith.spark.shadow.protobuf")
+        dependencies {
+            exclude(dependency("net.kyori:adventure-api:.*"))
+            exclude(dependency("net.kyori:adventure-key:.*"))
+            exclude(dependency("net.kyori:adventure-nbt:.*"))
+            exclude(dependency("net.kyori:adventure-text-logger-slf4j:.*"))
+            exclude(dependency("net.kyori:adventure-text-minimessage:.*"))
+            exclude(dependency("net.kyori:adventure-text-serializer-ansi:.*"))
+            exclude(dependency("net.kyori:adventure-text-serializer-commons:.*"))
+            exclude(dependency("net.kyori:adventure-text-serializer-gson:.*"))
+            exclude(dependency("net.kyori:adventure-text-serializer-json:.*"))
+            exclude(dependency("net.kyori:adventure-text-serializer-json-legacy-impl:.*"))
+            exclude(dependency("net.kyori:adventure-text-serializer-legacy:.*"))
+            exclude(dependency("net.kyori:ansi:.*"))
+            exclude(dependency("net.kyori:examination-api:.*"))
+            exclude(dependency("net.kyori:examination-string:.*"))
+            exclude(dependency("net.kyori:option:.*"))
+        }
     }
 }
