@@ -8,7 +8,7 @@ import me.lucko.spark.common.SparkPlatform;
 import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 
 @Plugin(
-    id = "spark",
+    id = BuildConstants.PLUGIN_ID,
     version = BuildConstants.VERSION,
     description = "ZenithProxy Spark Plugin",
     url = "https://github.com/rfresh2/ZenithProxySparkPlugin",
