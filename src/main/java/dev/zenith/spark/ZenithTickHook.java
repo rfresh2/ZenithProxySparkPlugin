@@ -16,7 +16,7 @@ public class ZenithTickHook extends AbstractTickHook {
     public void start() {
         EVENT_BUS.subscribe(
             this,
-            of(ClientTickEvent.class, this::onClientTick)
+            of(ClientTickEvent.class, Integer.MAX_VALUE, this::onClientTick)
         );
     }
 
