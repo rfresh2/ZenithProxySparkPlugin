@@ -54,8 +54,6 @@ tasks {
             exclude(dependency("net.kyori:adventure-text-serializer-json-legacy-impl:.*"))
             exclude(dependency("net.kyori:adventure-text-serializer-legacy:.*"))
             exclude(dependency("net.kyori:ansi:.*"))
-            exclude(dependency("net.kyori:examination-api:.*"))
-            exclude(dependency("net.kyori:examination-string:.*"))
             exclude(dependency("net.kyori:option:.*"))
         }
     }
