@@ -1,5 +1,5 @@
 plugins {
-    id("zenithproxy.plugin.dev") version "1.0.1-SNAPSHOT"
+    id("zenithproxy.plugin.dev") version "1.2.0"
 }
 
 group = property("maven_group") as String
@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     zenithProxy("com.zenith:ZenithProxy:$mc-SNAPSHOT")
-    shade("me.lucko:spark-common:1.10.181-SNAPSHOT")
+    shade("me.lucko:spark-common:1.10.185-SNAPSHOT")
 }
 
 tasks {
