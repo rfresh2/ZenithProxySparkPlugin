@@ -34,7 +34,7 @@ repositories {
 
 dependencies {
     zenithProxy("com.zenith:ZenithProxy:$mc-SNAPSHOT")
-    shade("me.lucko:spark-common:1.10.185-SNAPSHOT")
+    shade("me.lucko:spark-common:1.10.186-SNAPSHOT")
 }
 
 tasks {
